@@ -18,6 +18,8 @@ struct ContentView: View {
     
     @State var inputNotes: String = ""
     
+    @State var favourites: [DogImage] = []
+    
     // MARK: Computed properties
     var body: some View {
         
@@ -31,6 +33,9 @@ struct ContentView: View {
             Image(systemName: "heart.circle")
                 .resizable()
                 .frame(width: 40, height: 40)
+                .onTapGesture {
+                    favourites.append(currentImage)
+                }
             
             Button(action: {
                 print("Button was pressed")
@@ -52,8 +57,8 @@ struct ContentView: View {
                 Spacer()
             }
             
-            List {
-                Text("I'm a placeholder text.")
+            List(favourites) { currentImage in
+                RemoteImageView(fromURL: URL(string: currentImage.message)!)
             }
             
             // Push main image to top of screen

@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct DogImage: Decodable {
+struct DogImage: Decodable, Identifiable {
+    let id = UUID()
     let message: String
     let status: String
 }
