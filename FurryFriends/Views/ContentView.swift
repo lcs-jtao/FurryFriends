@@ -34,6 +34,11 @@ struct ContentView: View {
             
             Button(action: {
                 print("Button was pressed")
+                
+                Task {
+                    await loadNewImage()
+                }
+                
             }, label: {
                 Text("Another one!")
             })
@@ -43,6 +48,7 @@ struct ContentView: View {
                 Text("Favourites")
                     .bold()
                     .font(.title)
+                
                 Spacer()
             }
             
@@ -57,28 +63,9 @@ struct ContentView: View {
         }
         // Runs once when the app is opened
         .task {
+            await loadNewImage()
             
-            let remoteDogImage = URL(string: "https://dog.ceo/api/breeds/image/random")!
-            
-            var request = URLRequest(url: remoteDogImage)
-            
-            request.setValue("application/json", forHTTPHeaderField: "Accept")
-            
-            let urlSession = URLSession.shared
-            
-            do {
-                
-                let (data, _) = try await urlSession.data(for: request)
-                
-                currentImage = try JSONDecoder().decode(DogImage.self, from: data)
-                
-            } catch {
-                
-                print("Could not retrieve or decode the JSON from endpoint.")
-                
-                print(error)
-            }
-                        
+            print("Have just attempted to load a new image.")
         }
         .navigationTitle("Furry Friends")
         .padding()
@@ -86,7 +73,25 @@ struct ContentView: View {
     }
     
     // MARK: Functions
-    
+    func loadNewImage() async {
+        let remoteDogImage = URL(string: "https://dog.ceo/api/breeds/image/random")!
+        
+        var request = URLRequest(url: remoteDogImage)
+        
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let urlSession = URLSession.shared
+        
+        do {
+            let (data, _) = try await urlSession.data(for: request)
+            
+            currentImage = try JSONDecoder().decode(DogImage.self, from: data)
+        } catch {
+            print("Could not retrieve or decode the JSON from endpoint.")
+            
+            print(error)
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
