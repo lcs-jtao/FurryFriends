@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6C15BC8427CE65EE000DC76A /* CatImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C15BC8327CE65EE000DC76A /* CatImage.swift */; };
+		6C15BC8427CE65EE000DC76A /* DogImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C15BC8327CE65EE000DC76A /* DogImage.swift */; };
 		8134B14527CA4862004DEB85 /* FurryFriendsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134B14427CA4862004DEB85 /* FurryFriendsApp.swift */; };
 		8134B14727CA4862004DEB85 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134B14627CA4862004DEB85 /* ContentView.swift */; };
 		8134B14927CA4863004DEB85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8134B14827CA4863004DEB85 /* Assets.xcassets */; };
@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6C15BC8327CE65EE000DC76A /* CatImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImage.swift; sourceTree = "<group>"; };
+		6C15BC8327CE65EE000DC76A /* DogImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogImage.swift; sourceTree = "<group>"; };
 		8134B14127CA4862004DEB85 /* FurryFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FurryFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8134B14427CA4862004DEB85 /* FurryFriendsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurryFriendsApp.swift; sourceTree = "<group>"; };
 		8134B14627CA4862004DEB85 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -41,7 +41,7 @@
 		6C15BC8227CE65CE000DC76A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6C15BC8327CE65EE000DC76A /* CatImage.swift */,
+				6C15BC8327CE65EE000DC76A /* DogImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,7 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C15BC8427CE65EE000DC76A /* CatImage.swift in Sources */,
+				6C15BC8427CE65EE000DC76A /* DogImage.swift in Sources */,
 				8134B14727CA4862004DEB85 /* ContentView.swift in Sources */,
 				8134B15427CA55F4004DEB85 /* RemoteImageView.swift in Sources */,
 				8134B14527CA4862004DEB85 /* FurryFriendsApp.swift in Sources */,
