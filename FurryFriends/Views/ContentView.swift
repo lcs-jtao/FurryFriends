@@ -20,6 +20,8 @@ struct ContentView: View {
     
     @State var favourites: [DogImage] = []
     
+    @State var currentImageAddedToFavourites: Bool = false
+    
     // MARK: Computed properties
     var body: some View {
         
@@ -34,7 +36,10 @@ struct ContentView: View {
                 .resizable()
                 .frame(width: 40, height: 40)
                 .onTapGesture {
-                    favourites.append(currentImage)
+                    if currentImageAddedToFavourites == false {
+                        favourites.append(currentImage)
+                        currentImageAddedToFavourites = true
+                    }
                 }
             
             Button(action: {
@@ -91,6 +96,8 @@ struct ContentView: View {
             let (data, _) = try await urlSession.data(for: request)
             
             currentImage = try JSONDecoder().decode(DogImage.self, from: data)
+            
+            currentImageAddedToFavourites = false
         } catch {
             print("Could not retrieve or decode the JSON from endpoint.")
             
