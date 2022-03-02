@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     // MARK: Stored properties
+    @Environment(\.scenePhase) var scenePhase
     
     // Address for main image
     // Starts as a transparent pixel – until an address for an animal's image is set
@@ -72,6 +73,19 @@ struct ContentView: View {
             
 
         }
+        
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .inactive {
+                print("Inactive")
+            } else if newPhase == .active {
+                print("Active")
+            } else if newPhase == .background {
+                print("Background")
+                
+                persistFavourites()
+            }
+        }
+        
         // Runs once when the app is opened
         .task {
             await loadNewImage()
