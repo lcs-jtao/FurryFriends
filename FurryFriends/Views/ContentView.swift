@@ -177,7 +177,7 @@ struct ContentView: View {
     
     // Functions for storing/loading data from the "favouriteImages" list to/from the device storage
     func persistFavouriteImages() {
-        let filename = getDocumentsDirectory().appendingPathComponent(savedFavouritesLabel)
+        let filename = getDocumentsDirectory().appendingPathComponent(savedFavouriteImageLabel)
         
         do {
             let encoder = JSONEncoder()
@@ -199,7 +199,7 @@ struct ContentView: View {
     }
     
     func loadFavouriteImages() {
-        let filename = getDocumentsDirectory().appendingPathComponent(savedFavouritesLabel)
+        let filename = getDocumentsDirectory().appendingPathComponent(savedFavouriteImageLabel)
         
         print(filename)
                 
