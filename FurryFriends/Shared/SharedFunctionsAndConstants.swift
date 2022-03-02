@@ -13,3 +13,4 @@ func getDocumentsDirectory() -> URL {
 }
 
 let savedFavouritesLabel = "savedFavourites"
+let savedFavouriteImageLabel = "savedFavouriteImage"
