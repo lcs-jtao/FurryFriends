@@ -57,7 +57,7 @@ struct ContentView: View {
                 Spacer()
             }
             
-            List(favourites) { currentImage in
+            List(favourites, id: \.self) { currentImage in
                 RemoteImageView(fromURL: URL(string: currentImage.message)!)
             }
             
