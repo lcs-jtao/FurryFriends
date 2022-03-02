@@ -33,24 +33,22 @@ struct ContentView: View {
             // Shows the main image
             RemoteImageView(fromURL: URL(string: currentImage.message)!)
             
+            TextField("Notes", text: $inputNotes, prompt: Text("Enter your notes here"))
+            
             Image(systemName: "heart.circle")
                 .resizable()
                 .frame(width: 40, height: 40)
                 .onTapGesture {
                     if currentImageAddedToFavourites == false {
                         favourites.append(currentImage)
+                        favouriteImages.append(FavouriteImage(url: URL(string: currentImage.message)!, note: inputNotes))
                         currentImageAddedToFavourites = true
                     }
                 }
                 .foregroundColor(currentImageAddedToFavourites == true ? .red : .secondary)
             
-            TextField("Notes", text: $inputNotes, prompt: Text("Enter your notes here"))
-                .opacity(currentImageAddedToFavourites == true ? 1.0 : 0.0)
-            
             Button(action: {
                 print("Button was pressed")
-                
-                favouriteImages.append(FavouriteImage(url: URL(string: currentImage.message)!, note: inputNotes))
                 
                 inputNotes = ""
                 

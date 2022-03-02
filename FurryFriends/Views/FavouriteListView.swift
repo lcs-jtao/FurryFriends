@@ -21,7 +21,11 @@ struct FavouriteListView: View {
                         .bold()
                         .italic()
                 
-                Text(note)
+                if note == "" {
+                    Text("None")
+                } else {
+                    Text(note)
+                }
                 
                 Spacer()
             }
