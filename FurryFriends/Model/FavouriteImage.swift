@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FavouriteImage: Hashable {
+struct FavouriteImage: Hashable, Encodable, Decodable {
     let id = UUID()
     let url: URL
     let note: String

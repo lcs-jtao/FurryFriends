@@ -92,6 +92,7 @@ struct ContentView: View {
                 print("Background")
                 
                 persistFavourites()
+                persistFavouriteImages()
             }
         }
         
@@ -102,6 +103,7 @@ struct ContentView: View {
             print("Have just attempted to load a new image.")
             
             loadFavourites()
+            loadFavouriteImages()
         }
         .navigationTitle("Furry Friends")
         .padding()
@@ -131,6 +133,7 @@ struct ContentView: View {
         }
     }
     
+    // Functions for storing/loading data from the "favourites" list to/from the device storage
     func persistFavourites() {
         let filename = getDocumentsDirectory().appendingPathComponent(savedFavouritesLabel)
         
@@ -165,6 +168,48 @@ struct ContentView: View {
             print(String(data: data, encoding: .utf8)!)
 
             favourites = try JSONDecoder().decode([DogImage].self, from: data)
+        } catch {
+            print(error.localizedDescription)
+            
+            print("Could not load data from file, initializing with tasks provided to initializer.")
+        }
+    }
+    
+    // Functions for storing/loading data from the "favouriteImages" list to/from the device storage
+    func persistFavouriteImages() {
+        let filename = getDocumentsDirectory().appendingPathComponent(savedFavouritesLabel)
+        
+        do {
+            let encoder = JSONEncoder()
+
+            encoder.outputFormatting = .prettyPrinted
+            
+            let data = try encoder.encode(favouriteImages)
+            
+            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
+            
+            print("Saved data to documents directory successfully.")
+            print("===")
+            print(String(data: data, encoding: .utf8)!)
+        } catch {
+            print(error.localizedDescription)
+            
+            print("Unable to write list of favourites to documents directory in app bundle on device.")
+        }
+    }
+    
+    func loadFavouriteImages() {
+        let filename = getDocumentsDirectory().appendingPathComponent(savedFavouritesLabel)
+        
+        print(filename)
+                
+        do {
+            let data = try Data(contentsOf: filename)
+            
+            print("Got data from file, contents are:")
+            print(String(data: data, encoding: .utf8)!)
+
+            favouriteImages = try JSONDecoder().decode([FavouriteImage].self, from: data)
         } catch {
             print(error.localizedDescription)
             
