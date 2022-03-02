@@ -21,6 +21,8 @@ struct ContentView: View {
     
     @State var favourites: [DogImage] = []
     
+    @State var favouriteImages: [FavouriteImage] = []
+    
     @State var currentImageAddedToFavourites: Bool = false
     
     // MARK: Computed properties
@@ -30,8 +32,6 @@ struct ContentView: View {
             
             // Shows the main image
             RemoteImageView(fromURL: URL(string: currentImage.message)!)
-            
-            TextField("Notes", text: $inputNotes, prompt: Text("Enter your notes here"))
             
             Image(systemName: "heart.circle")
                 .resizable()
@@ -44,8 +44,15 @@ struct ContentView: View {
                 }
                 .foregroundColor(currentImageAddedToFavourites == true ? .red : .secondary)
             
+            TextField("Notes", text: $inputNotes, prompt: Text("Enter your notes here"))
+                .opacity(currentImageAddedToFavourites == true ? 1.0 : 0.0)
+            
             Button(action: {
                 print("Button was pressed")
+                
+                favouriteImages.append(FavouriteImage(url: URL(string: currentImage.message)!, note: inputNotes))
+                
+                inputNotes = ""
                 
                 Task {
                     await loadNewImage()
@@ -64,8 +71,10 @@ struct ContentView: View {
                 Spacer()
             }
             
-            List(favourites, id: \.self) { currentImage in
-                RemoteImageView(fromURL: URL(string: currentImage.message)!)
+            List(favouriteImages, id: \.self) { currentFavouriteImage in
+                NavigationLink(destination: FavouriteListView(imageURL: currentFavouriteImage.url, note: currentFavouriteImage.note)) {
+                    RemoteImageView(fromURL: currentFavouriteImage.url)
+                }
             }
             
             // Push main image to top of screen
