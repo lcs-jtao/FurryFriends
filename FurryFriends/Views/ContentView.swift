@@ -41,6 +41,7 @@ struct ContentView: View {
                         currentImageAddedToFavourites = true
                     }
                 }
+                .foregroundColor(currentImageAddedToFavourites == true ? .red : .secondary)
             
             Button(action: {
                 print("Button was pressed")
