@@ -71,7 +71,13 @@ struct ContentView: View {
             
             List(favouriteImages, id: \.self) { currentFavouriteImage in
                 NavigationLink(destination: DetailPageView(imageURL: currentFavouriteImage.url, note: currentFavouriteImage.note)) {
-                    RemoteImageView(fromURL: currentFavouriteImage.url)
+                    HStack {
+                        RemoteImageView(fromURL: currentFavouriteImage.url)
+                            .frame(width: 50, height: 50, alignment: .center)
+                            .clipped()
+                        
+                        Spacer()
+                    }
                 }
             }
             
