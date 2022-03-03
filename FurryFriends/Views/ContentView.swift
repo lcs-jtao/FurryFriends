@@ -39,6 +39,7 @@ struct ContentView: View {
             RemoteImageView(fromURL: URL(string: currentImage.message)!)
             
             TextField("Notes", text: $inputNotes, prompt: Text("Enter your notes here"))
+                .autocapitalization(.none)
             
             Image(systemName: "heart.circle")
                 .resizable()
