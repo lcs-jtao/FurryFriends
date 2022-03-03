@@ -32,11 +32,14 @@ struct DetailPageView: View {
             Spacer()
         }
         .padding()
+        .navigationTitle("Favourite Little Friend")
     }
 }
 
 struct DetailPageView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailPageView(imageURL: URL(string: "https://picsum.photos/640/360")!, note: "Hi")
+        NavigationView {
+            DetailPageView(imageURL: URL(string: "https://picsum.photos/640/360")!, note: "Hi")
+        }
     }
 }
