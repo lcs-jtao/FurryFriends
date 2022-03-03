@@ -25,6 +25,8 @@ struct ContentView: View {
     
     @State var currentImageAddedToFavourites: Bool = false
     
+    @State var initialAppLoadingCompleted: Bool = false
+    
     // MARK: Computed properties
     var body: some View {
         
@@ -102,7 +104,11 @@ struct ContentView: View {
         
         // Runs once when the app is opened
         .task {
-            await loadNewImage()
+            initialAppLoadingCompleted = true
+            
+            if initialAppLoadingCompleted == false {
+                await loadNewImage()
+            }
             
             print("Have just attempted to load a new image.")
             
