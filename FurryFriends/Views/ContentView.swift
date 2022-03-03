@@ -70,7 +70,7 @@ struct ContentView: View {
             }
             
             List(favouriteImages, id: \.self) { currentFavouriteImage in
-                NavigationLink(destination: FavouriteListView(imageURL: currentFavouriteImage.url, note: currentFavouriteImage.note)) {
+                NavigationLink(destination: DetailPageView(imageURL: currentFavouriteImage.url, note: currentFavouriteImage.note)) {
                     RemoteImageView(fromURL: currentFavouriteImage.url)
                 }
             }

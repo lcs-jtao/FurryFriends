@@ -1,5 +1,5 @@
 //
-//  FavouriteListView.swift
+//  DetailPageView.swift
 //  FurryFriends
 //
 //  Created by Joyce Tao on 2022-03-02.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FavouriteListView: View {
+struct DetailPageView: View {
     
     let imageURL: URL
     let note: String
@@ -35,8 +35,8 @@ struct FavouriteListView: View {
     }
 }
 
-struct FavouriteListView_Previews: PreviewProvider {
+struct DetailPageView_Previews: PreviewProvider {
     static var previews: some View {
-        FavouriteListView(imageURL: URL(string: "https://picsum.photos/640/360")!, note: "Hi")
+        DetailPageView(imageURL: URL(string: "https://picsum.photos/640/360")!, note: "Hi")
     }
 }
